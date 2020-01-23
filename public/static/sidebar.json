@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Home",
+    "value": "Home",
+    "icon": "mdi mdi-view-dashboard"
+  },
+  {
+    "type": "separator"
+  },
+  {
+    "id": "Join",
+    "value": "Join",
+    "icon": "mdi mdi-file-outline"
+  },
+  {
+    "id": "Board",
+    "value": "Board",
+    "icon": "mdi mdi-square-edit-outline",
+    "items": [
+      {
+        "id": "addPost",
+        "value": "New Post",
+        "icon": "mdi mdi-plus"
+      },
+      {
+        "id": "allPost",
+        "value": "Posts",
+        "icon": "mdi mdi-view-list"
+      }
+    ]
+  },
+  {
+    "id": "Etc",
+    "value": "Etc",
+    "icon": "mdi mdi-settings"
+  }
+]
