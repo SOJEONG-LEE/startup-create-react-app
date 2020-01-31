@@ -11,41 +11,14 @@ import AddPost from "./components/post/AddPost";
 import Etc from "./components/etc/Etc";
 import ReadPost from "./components/post/ReadPost";
 import AllPost from "./components/post/AllPost";
+import Database from "./components/Database";
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            mode: 'read',
-            select_content_id: 3,
-            subject: {
-                title: 'WEB',
-                sub: 'World Wide Web!'
-            },
-            welcome: {
-                title: 'Welcome',
-                desc: 'Hello, React!'
-            },
-            contents: [
-                {id: 1, title: 'HTML', desc: 'HTML is for information'},
-                {id: 2, title: 'CSS', desc: 'CSS is for Design'},
-                {id: 3, title: 'JavaScript', desc: 'JavaScript is for interactive'}
-            ]
-        }
     }
 
     render() {
-        var _title, _desc = null;
-        if (this.state.mode === 'welcome') {
-            _title = this.state.welcome.title;
-            _desc = this.state.welcome.desc;
-        } else if (this.state.mode === 'read') {
-            var select_content =
-                this.state.contents.find(f => f.id === this.state.select_content_id);
-            console.log(select_content);
-            _title = select_content.title;
-            _desc = select_content.desc;
-        }
         return (
             // react는 모든 파일을 다 로딩한 상태에서 URL마다 다른 컴포넌트를
             <HashRouter hashType={'slash'}>
@@ -65,6 +38,9 @@ class App extends Component {
                                     <Route path={`/allPost`} component={() => <AllPost></AllPost>}/>
                                     <Route path={`/Etc`} component={() =>
                                         <Etc></Etc>
+                                    }/>
+                                    <Route path={`/Database`} component={() =>
+                                        <Database></Database>
                                     }/>
                                     // 루트(/) 요청으로 Redirect
                                     <Redirect path="*" to="/" />
