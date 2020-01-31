@@ -22,6 +22,11 @@ app.get('/database', (request, response) => {
     });
 });
 
+app.post('/form_update', (request, response) => {
+    // client.query('insert into  name, password, email, ');
+    console.log(response);
+});
+
 app.listen(4000, () => {
     console.log('Example app listening on port 4000!');
 });

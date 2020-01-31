@@ -33,5 +33,10 @@
     "id": "Etc",
     "value": "Etc",
     "icon": "mdi mdi-settings"
+  },
+  {
+    "id": "Database",
+    "value": "Database",
+    "icon": "mdi mdi-file-outline"
   }
 ]
