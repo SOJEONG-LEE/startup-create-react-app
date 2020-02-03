@@ -22,9 +22,39 @@ app.get('/database', (request, response) => {
     });
 });
 
+app.post('/checkid', (request, response) => {
+    console.log("check id");
+    let checkIdQuery = `select exists(SELECT * from member where id='${response.req.body.id}')`;
+    console.log(checkIdQuery);
+    client.query(checkIdQuery, (err, res) => {
+       console.log("check id response", res.rows[0]);
+       if(res.rows[0].exists === true){
+           response.status(200).send({result:false});
+       }else{
+           response.status(200).send({result:true});
+       }
+    });
+
+});
+
 app.post('/form_update', (request, response) => {
-    // client.query('insert into  name, password, email, ');
-    console.log(response);
+    const body = response.req.body;
+    console.log(body);
+    const id = body.id;
+    // var timestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    let sql = `INSERT INTO member(id, password, name, email, phone) VALUES ('${body.id}', '${body.password}', '${body.name}', '${body.email}', '${body.phone}')`;
+    console.log(sql)
+    client.query(sql, (err, res) => {
+        if (err) {
+            console.log(err.stack);
+            response.status(400);
+            response.send('Wrong Values');
+        } else {
+            console.log(res.rows[0])
+            response.status(200).send();
+        }
+    });
+
 });
 
 app.listen(4000, () => {
